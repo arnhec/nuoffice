@@ -1,0 +1,58 @@
+@CHARSET "UTF-8";
+
+.CodeMirror {
+
+	line-height: 1.4;
+	height: 800px;
+	
+}
+
+.CodeMirror-linenumber.CodeMirror-gutter-elt {
+	padding: 0px;
+}
+
+
+.disabled {
+	color : transparent;
+}
+
+form, fieldset{
+	padding : 20px;
+}
+body {
+	background-color: white;
+ }
+
+.ng-table {
+	color: white;
+	border-radius: 5px;
+	background-color: #6485C1;
+}
+
+.navbar-inverse {
+	background-color: #6485C1;
+	border-color: #6485C1;
+	border-radius: 0px;
+	color : white;
+}
+.navbar-inverse .navbar-brand {
+	color : white;
+}
+.btn-primary {
+	background-color: #6485C1;
+	border-color: #6485C1;
+}
+
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:hover {
+	background-color: #6485C1; !important;
+}
+
+
+.table>tbody>tr:hover {
+	background-color: green;
+
+}
+
+.table tr.selected {
+	background-color: green;
+}

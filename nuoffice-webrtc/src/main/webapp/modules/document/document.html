@@ -1,0 +1,45 @@
+<div class="col-md-12 sourcecode" ng-controller="DocumentController">
+
+
+	<div class="row">
+		<div class="col-md-12 navbar">
+			<button type="button" ng-click="create()" class="btn btn-success" ng-disabled="opened">New</button>
+			<button type="button" ng-click="save()" class="btn btn-success" ng-disabled="!opened || saved">Save</button>
+			<button type="button" ng-click="close()" class="btn btn-success" ng-disabled="!opened">Close</button>
+		</div>
+	</div>
+	<div class="row">
+
+		<!-- Modal -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="myModalLabel">Create Document</h4>
+					</div>
+					<div class="modal-body">
+						<form>
+							<div class="form-group">
+								<label for="name" class="control-label">Name</label> <input ng-model="filename" type="text" class="form-control" id="name">
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+						<button id = "ok" type="button" class="btn btn-primary">Ok</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<textarea class="CodeMirror" id="sourcecode"></textarea>
+	</div>
+
+
+
+</div>
+

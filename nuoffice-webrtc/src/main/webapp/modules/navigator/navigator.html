@@ -1,0 +1,17 @@
+<div class="navigator" ng-controller="NavigatorController">
+	<div class="navbar ">
+		<button type="button" ng-click="selectLink('src/main/java')" class="btn btn-primary">Java</button>
+		<button type="button"  ng-click="selectLink('src/main/webapp')" class="btn btn-primary">Webapp</button>
+		<button type="button"  ng-click="selectLink('src/main/resource')" class="btn btn-primary">Resource</button>
+		<button type="button"  ng-click="selectLink('src/test')" class="btn btn-primary">Test</button>
+	</div>
+	<div class="table-responsive">
+
+		<table ng-table="tableParams" show-filter="true" class="table table-hover table-condensed">
+			<tr ng-repeat="row in my_data | orderBy : params.orderBy()" ng-click="select(row)" ng-class="{'selected' : row.$selected}">
+				<td data-title="'Filename'" sortable="'label'">{{row.label}}</td>
+				<td data-title="'Size'" sortable="'size'">{{row.size}}</td>
+			</tr>
+		</table>
+	</div>
+</div>
