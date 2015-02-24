@@ -57,8 +57,9 @@
 									<label class="col-md-6 control-label" for="versicherungsbeginn">Versicherungsbeginn</label>
 									<div class="col-md-6">
 										<input type="date" id="versicherungsbeginn"
-											ng-model="model.versicherungsbeginn" name="versicherungsbeginn"
-											type="text" placeholder="" class="form-control input-md">
+											ng-model="model.versicherungsbeginn"
+											name="versicherungsbeginn" type="text" placeholder=""
+											class="form-control input-md">
 									</div>
 								</div>
 
@@ -70,8 +71,8 @@
 									<label class="col-md-6 control-label" for="versicherungsnehmer">Versicherungsnehmer</label>
 									<div class="col-md-6">
 										<select id="versicherungsnehmer"
-											ng-model="model.versicherungsnehmer" name="versicherungsnehmer"
-											class="form-control">
+											ng-model="model.versicherungsnehmer"
+											name="versicherungsnehmer" class="form-control">
 											<option value="" disabled selected>Bitte wählen Sie</option>
 											<option ng-repeat="item in versicherungsnehmerListe"
 												value="{{item.id}}">{{item.label}}</option>
@@ -112,7 +113,7 @@
 											</label>
 										</div>
 									</div>
-							
+
 								</div>
 
 							</div>
@@ -142,8 +143,8 @@
 										<label class="col-md-6 control-label" for="tsn">Typschlüssel-Nr.
 											(TSN)</label>
 										<div class="col-md-6">
-											<input id="tsn" name="tsn" type="text" ng-model="model.tsn" placeholder="TSN"
-												class="form-control input-md"> <span
+											<input id="tsn" name="tsn" type="text" ng-model="model.tsn"
+												placeholder="TSN" class="form-control input-md"> <span
 												class="help-block">Die ersten 3 Stellen der
 												Typschlüssel-Nummer (TSN) Ihres Fahrzeugs finden Sie in der
 												Zulassungsbescheinigung Teil 1 bzw. im Fahrzeugschein.</span>
@@ -302,9 +303,9 @@
 										<div class="col-md-12" ng-repeat="item in nutzerListe">
 											<input id="nutzer-{{item.id}}" class="" type="checkbox"
 												ng-click="toggleNutzer(item.id)"
-												ng-checked="model.nutzer.indexOf(item.id) > -1" name="nutzer"
-												id="nutzer-{{item.id}}" value="{{item.label}}" /> <label
-												for="nutzer-{{item.id}}">{{item.label}}</label>
+												ng-checked="model.nutzer.indexOf(item.id) > -1"
+												name="nutzer" id="nutzer-{{item.id}}" value="{{item.label}}" />
+											<label for="nutzer-{{item.id}}">{{item.label}}</label>
 										</div>
 									</div>
 								</div>
@@ -318,9 +319,9 @@
 								<div class="form-group col-md-12">
 									<label class="col-md-6 control-label" for="geburtsdatum">Geburtsdatum</label>
 									<div class="col-md-6">
-										<input type="date" id="geburtsdatum" ng-model="model.geburtsdatum"
-											name="geburtsdatum" type="text" placeholder=""
-											class="form-control input-md">
+										<input type="date" id="geburtsdatum"
+											ng-model="model.geburtsdatum" name="geburtsdatum" type="text"
+											placeholder="" class="form-control input-md">
 									</div>
 								</div>
 								<div class="col-md-6"></div>
@@ -419,20 +420,22 @@
 										<div class="radio">
 											<label for="fuehrerschein3Jahre-Ja"> <input
 												type="radio" name="fuehrerschein3Jahre"
-												ng-model="model.fuehrerschein3Jahre" id="fuehrerschein3Jahre-Ja"
-												value="ja" checked="checked">Ja
+												ng-model="model.fuehrerschein3Jahre"
+												id="fuehrerschein3Jahre-Ja" value="ja" checked="checked">Ja
 											</label>
 										</div>
 										<div class="radio">
 											<label for="fahrzeugauswahl-1"> <input type="radio"
-												name="fuehrerschein3Jahre" ng-model="model.fuehrerschein3Jahre"
+												name="fuehrerschein3Jahre"
+												ng-model="model.fuehrerschein3Jahre"
 												id="fuehrerschein3Jahre-Nein" value="nein">Nein
 											</label>
 										</div>
 									</div>
 								</div>
 								<div class="col-md-6">
-									<tt>fuehrerschein3Jahre = {{model.fuehrerschein3Jahre | json}}</tt>
+									<tt>fuehrerschein3Jahre = {{model.fuehrerschein3Jahre |
+										json}}</tt>
 									<br />
 								</div>
 							</div>
@@ -520,10 +523,12 @@
 </div>
 <div class="col-md-6">
 
+
 	<div style="display: none">
 		<p>
 			<label class="control-label" for="name">Name</label> <input id="name"
-				name="name" ng-init="name='Agent'" value="Client" class="form-control" type="text"
+				name="name" ng-init="name='Agent'" value="Client"
+				class="form-control" type="text"
 				onkeydown="if (event.keyCode == 13) register();" /> <label
 				class="control-label" for="peer">Peer</label> <input id="peer"
 				disabled="disabled" value="Agent" class="form-control" type="text"
@@ -532,13 +537,24 @@
 		</p>
 	</div>
 
-	<a id="register"  class="btn btn-primary"
-		ng-click="register()"><span
-		class="glyphicon glyphicon-plus"></span> Register</a> <a id="call"
-		 class="btn btn-success" ng-click="call()"><span
-		class="glyphicon glyphicon-play"></span> Call</a> <a id="terminate"
-		 class="btn btn-danger" ng-click="stop()"><span
-		class="glyphicon glyphicon-stop"></span> Hangup</a>
+	<a id="register" class="btn btn-primary" ng-click="register()"><span
+		class="glyphicon glyphicon-plus"></span> Register</a> <a
+		style="display: none" id="call" class="btn btn-success"
+		ng-click="call()"><span class="glyphicon glyphicon-play"></span>
+		Call</a> <a id="terminate" class="btn btn-danger" ng-click="stop()"><span
+		class="glyphicon glyphicon-stop"></span> Hangup</a> <a id="verifySample"
+		class="btn btn-info" ng-click="verifySample()"><span
+		class="glyphicon glyphicon-record"></span> Identify</a> <a
+		id="startRecording" class="btn btn-success"
+		ng-click="startRecording()"><span
+		class="glyphicon glyphicon-record"></span> Record</a> <a id="play"
+		class="btn btn-warning" ng-click="play()"><span
+		class="glyphicon glyphicon-play-circle"></span> Play</a> <a
+		id="stopRecording" class="btn btn-danger" ng-click="stopRecording()"><span
+		class="glyphicon glyphicon-stop"></span> Stop</a> <a id="addPrint"
+		class="btn btn-primary" ng-click="addPrint()"><span
+		class="glyphicon glyphicon-record"></span> Add</a>
+
 	<div class="checkbox">
 		<label> <input id="cobrowsing" type="checkbox" checked>
 			Co-browsing
@@ -549,7 +565,8 @@
 		<label class="control-label" for="peer">Input Text</label> <input
 			id="chatInput" ng-model="chatInput" class="form-control" type="text"
 			ng-enter="chat()" />
-		<textarea id="chatText" ng-model="chatText" class="form-control" rows="5" id="comment"></textarea>
+		<textarea id="chatText" ng-model="chatText" class="form-control"
+			rows="5" id="comment"></textarea>
 	</div>
 	<div id="videoBig">
 		<video id="videoOutput" autoplay width="640px" height="480px"
