@@ -260,7 +260,7 @@ appControllers.controller('MainCtrl', [
 				}
 			}
 
-			$scope.register = function () {
+			$scope.register = function() {
 				var name = $scope.name;
 				if (name == '') {
 					window.alert("You must insert your user name");
@@ -365,7 +365,7 @@ appControllers.controller('MainCtrl', [
 			}
 
 			function addToTextChat(message) {
-				document.getElementById('chatText').value = message.response;
+				$scope.chatText = message.response;
 				var psconsole = $('#chatText');
 				if (psconsole.length)
 					psconsole.scrollTop(psconsole[0].scrollHeight - psconsole.height());

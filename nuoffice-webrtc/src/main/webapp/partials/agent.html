@@ -522,7 +522,7 @@
 	<div style="display: none">
 		<p>
 			<label class="control-label" for="name">Name</label> <input id="name"
-				name="name" value="Client" class="form-control" type="text"
+				name="name" ng-init="name='Client'" value="Client" class="form-control" type="text"
 				onkeydown="if (event.keyCode == 13) register();" /> <label
 				class="control-label" for="peer">Peer</label> <input id="peer"
 				disabled="disabled" value="Agent" class="form-control" type="text"
@@ -531,12 +531,12 @@
 		</p>
 	</div>
 
-	<a id="register" href="#" class="btn btn-primary"
-		onclick="register(); return false;"><span
+	<a id="register"  class="btn btn-primary"
+		ng-click="register()"><span
 		class="glyphicon glyphicon-plus"></span> Register</a> <a id="call"
-		href="#" class="btn btn-success" onclick="call(); return false;"><span
+		 class="btn btn-success" ng-click="call()"><span
 		class="glyphicon glyphicon-play"></span> Call</a> <a id="terminate"
-		href="#" class="btn btn-danger" onclick="stop(); return false;"><span
+		 class="btn btn-danger" ng-click="stop()"><span
 		class="glyphicon glyphicon-stop"></span> Hangup</a>
 	<div class="checkbox">
 		<label> <input id="cobrowsing" type="checkbox" checked>
@@ -548,7 +548,7 @@
 		<label class="control-label" for="peer">Input Text</label> <input
 			id="chatInput" class="form-control" type="text"
 			onkeydown="if (event.keyCode == 13) chat();" />
-		<textarea id="chatText" class="form-control" rows="5" id="comment"></textarea>
+		<textarea id="chatText" ng-model="chatText" class="form-control" rows="5" id="comment"></textarea>
 	</div>
 	<div id="videoBig">
 		<video id="videoOutput" autoplay width="640px" height="480px"
