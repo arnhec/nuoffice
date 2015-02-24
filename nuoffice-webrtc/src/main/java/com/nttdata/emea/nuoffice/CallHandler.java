@@ -339,6 +339,7 @@ public class CallHandler extends TextWebSocketHandler {
 	public void cobrowsing(WebSocketSession session, JsonObject jsonMessage)
 			throws IOException {
 		for (UserSession s : registry.getCobrowsingSessions()) {
+			log.info("receiving cobrowsing message");
 			if (!s.getSessionId().equals(session.getId()))
 				s.sendMessage(jsonMessage);
 		}

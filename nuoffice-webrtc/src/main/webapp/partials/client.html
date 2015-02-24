@@ -35,14 +35,14 @@
 									<label class="col-md-6 control-label" for="fahrzeugauswahl">Was
 										wollen Sie tun?</label>
 									<div class="col-md-6">
-										<div class="radio">
-											<label for="aktion-0"> <input ng-model="aktion"
+										<div class="radio ">
+											<label for="aktion-0"> <input ng-model="model.aktion"
 												type="radio" name="aktion" id="aktion-0" value="1">Bisheriges
 												Fahrzeug versichern
 											</label>
 										</div>
-										<div class="radio">
-											<label for="aktion-1"> <input ng-model="aktion"
+										<div class="radio ">
+											<label for="aktion-1"> <input ng-model="model.aktion"
 												type="radio" name="aktion" id="aktion-1" value="2">Neu
 												erworbenes Fahrzeug versichern
 											</label>
@@ -57,7 +57,7 @@
 									<label class="col-md-6 control-label" for="versicherungsbeginn">Versicherungsbeginn</label>
 									<div class="col-md-6">
 										<input type="date" id="versicherungsbeginn"
-											ng-model="versicherungsbeginn" name="versicherungsbeginn"
+											ng-model="model.versicherungsbeginn" name="versicherungsbeginn"
 											type="text" placeholder="" class="form-control input-md">
 									</div>
 								</div>
@@ -70,7 +70,7 @@
 									<label class="col-md-6 control-label" for="versicherungsnehmer">Versicherungsnehmer</label>
 									<div class="col-md-6">
 										<select id="versicherungsnehmer"
-											ng-model="versicherungsnehmer" name="versicherungsnehmer"
+											ng-model="model.versicherungsnehmer" name="versicherungsnehmer"
 											class="form-control">
 											<option value="" disabled selected>Bitte wählen Sie</option>
 											<option ng-repeat="item in versicherungsnehmerListe"
@@ -85,7 +85,7 @@
 								<div class="form-group col-md-12">
 									<label class="col-md-6 control-label" for="fahrzeugart">Fahrzeugart</label>
 									<div class="col-md-6">
-										<select id="fahrzeugart" ng-model="fahrzeugart"
+										<select id="fahrzeugart" ng-model="model.fahrzeugart"
 											name="fahrzeugart" class="form-control">
 											<option value="" disabled selected>Bitte wählen Sie</option>
 											<option ng-repeat="item in fahrzeugarten" value="1">{{item.label}}</option>
@@ -101,13 +101,13 @@
 									<div class="col-md-6">
 										<div class="radio">
 											<label for="fahrzeugauswahl-0"> <input type="radio"
-												name="fahrzeugauswahl" ng-model="fahrzeugauswahl"
+												name="fahrzeugauswahl" ng-model="model.fahrzeugauswahl"
 												id="fahrzeugauswahl-0" value="1" checked="checked">Fahrzeugschein
 											</label>
 										</div>
 										<div class="radio">
 											<label for="fahrzeugauswahl-1"> <input type="radio"
-												name="fahrzeugauswahl" ng-model="fahrzeugauswahl"
+												name="fahrzeugauswahl" ng-model="model.fahrzeugauswahl"
 												id="fahrzeugauswahl-1" value="2">Hersteller/Modell
 											</label>
 										</div>
@@ -115,7 +115,7 @@
 								</div>
 
 							</div>
-							<div ng-show="fahrzeugauswahl==1">
+							<div ng-show="model.fahrzeugauswahl==1">
 								<div class="row">
 									<!-- Text input-->
 									<div class="form-group col-md-12">
@@ -123,7 +123,7 @@
 											(HSN)</label>
 										<div class="col-md-6">
 											<input id="hsn" name="hsn" min="1000" max="9999"
-												type="number" placeholder="HSN" ng-model="hsn"
+												type="number" ng-model="hsn" placeholder="HSN" ng-model="hsn"
 												class="form-control input-md"> <span
 												class="help-block">Die 4-stellige Hersteller-Nummer
 												(HSN) finden Sie in der Zulassungsbescheinigung Teil 1 bzw.
@@ -141,7 +141,7 @@
 										<label class="col-md-6 control-label" for="tsn">Typschlüssel-Nr.
 											(TSN)</label>
 										<div class="col-md-6">
-											<input id="tsn" name="tsn" type="text" placeholder="TSN"
+											<input id="tsn" ng-model="tsn" name="tsn" type="text" placeholder="TSN"
 												class="form-control input-md"> <span
 												class="help-block">Die ersten 3 Stellen der
 												Typschlüssel-Nummer (TSN) Ihres Fahrzeugs finden Sie in der
@@ -151,12 +151,12 @@
 								</div>
 							</div>
 							<!-- Select Basic -->
-							<div ng-show="fahrzeugauswahl==2">
+							<div ng-show="model.fahrzeugauswahl==2">
 								<div class="row">
 									<div class="form-group col-md-12">
 										<label class="col-md-6 control-label" for="hersteller">Hersteller</label>
 										<div class="col-md-6">
-											<select id="hersteller" ng-model="hersteller"
+											<select id="hersteller" ng-model="model.hersteller"
 												name="hersteller" class="form-control">
 												<option value="" disabled selected>Bitte wählen
 													Sie</option>
@@ -166,7 +166,7 @@
 										</div>
 									</div>
 									<div class="col-md-6">
-										<tt>Hersteller = {{hersteller | json}}</tt>
+										<tt>Hersteller = {{model.hersteller | json}}</tt>
 										<br />
 									</div>
 
@@ -176,7 +176,7 @@
 									<div class="form-group col-md-12">
 										<label class="col-md-6 control-label" for="modell">Modell</label>
 										<div class="col-md-6">
-											<select id="modell" ng-model="modell" name="modell"
+											<select id="modell" ng-model="model.modell" name="modell"
 												class="form-control">
 												<option value="0" disabled selected>Bitte wählen
 													Sie</option>
@@ -186,7 +186,7 @@
 										</div>
 									</div>
 									<div class="col-md-6">
-										<tt>Modell = {{modell| json}}</tt>
+										<tt>Modell = {{model.modell| json}}</tt>
 										<br />
 									</div>
 								</div>
@@ -195,7 +195,7 @@
 									<div class="form-group col-md-12">
 										<label class="col-md-6 control-label" for="baujahr">Baujahr</label>
 										<div class="col-md-6">
-											<select id="baujahr" name="baujahr" ng-model="baujahr"
+											<select id="baujahr" name="baujahr" ng-model="model.baujahr"
 												class="form-control">
 												<option value="0" disabled selected>Bitte wählen
 													Sie</option>
@@ -222,7 +222,7 @@
 										zugelassen auf</label>
 									<div class="col-md-6">
 										<select id="eigentuemer" name="Eigentümer"
-											ng-model="eigentuemer" class="form-control">
+											ng-model="model.eigentuemer" class="form-control">
 											<option value="0" disabled selected>Bitte wählen
 												Sie</option>
 											<option ng-repeat="item in eigentuemerListe "
@@ -237,7 +237,7 @@
 									<label class="col-md-6 control-label" for="fahrzeugzulasssung">Fahrzeugzulassung</label>
 									<div class="col-md-6">
 										<input type="date" id="fahrzeugzulassung"
-											ng-model="fahrzeugzulassung" name="fahrzeugzulassung"
+											ng-model="model.fahrzeugzulassung" name="fahrzeugzulassung"
 											class="form-control" />
 									</div>
 								</div>
@@ -257,7 +257,7 @@
 										pro Jahr</label>
 									<div class="col-md-6">
 										<input type="number" id="fahrzeugleistung"
-											ng-model="fahrzeugleistung" name="fahrzeugleistung"
+											ng-model="model.fahrzeugleistung" name="fahrzeugleistung"
 											type="text" placeholder="15000" class="form-control input-md">
 									</div>
 								</div>
@@ -269,7 +269,7 @@
 									<label class="col-md-6 control-label" for="abstellort">Überwiegend
 										genutzter Abstellort</label>
 									<div class="col-md-6">
-										<select id="abstellort" ng-model="abstellort"
+										<select id="abstellort" ng-model="model.abstellort"
 											name="abstellort" class="form-control">
 											<option value="" disabled selected>Bitte wählen Sie</option>
 											<option ng-repeat="item in abstellorte" value="{{item.id}}">{{item.label}}</option>
@@ -283,7 +283,7 @@
 								<div class="form-group col-md-12">
 									<label class="col-md-6 control-label" for="nutzungsart">Nutzungsart</label>
 									<div class="col-md-6">
-										<select id="nutzungsart" ng-model="nutzungsart"
+										<select id="nutzungsart" ng-model="model.nutzungsart"
 											name="nutzungsart" class="form-control">
 											<option value="" disabled selected>Bitte wählen Sie</option>
 											<option ng-repeat="item in nutzungsarten" value="{{item.id}}">{{item.label}}</option>
@@ -301,14 +301,14 @@
 										<div class="col-md-12" ng-repeat="item in nutzerListe">
 											<input id="nutzer-{{item.id}}" class="" type="checkbox"
 												ng-click="toggleNutzer(item.id)"
-												ng-checked="nutzer.indexOf(item.id) > -1" name="nutzer"
+												ng-checked="model.nutzer.indexOf(item.id) > -1" name="nutzer"
 												id="nutzer-{{item.id}}" value="{{item.label}}" /> <label
 												for="nutzer-{{item.id}}">{{item.label}}</label>
 										</div>
 									</div>
 								</div>
 								<div class="col-md-6">
-									<tt>Nutzer = {{nutzer}} | json</tt>
+									<tt>Nutzer = {{model.nutzer}} | json</tt>
 									<br />
 								</div>
 							</div>
@@ -317,7 +317,7 @@
 								<div class="form-group col-md-12">
 									<label class="col-md-6 control-label" for="geburtsdatum">Geburtsdatum</label>
 									<div class="col-md-6">
-										<input type="date" id="geburtsdatum" ng-model="geburtsdatum"
+										<input type="date" id="geburtsdatum" ng-model="model.geburtsdatum"
 											name="geburtsdatum" type="text" placeholder=""
 											class="form-control input-md">
 									</div>
@@ -331,7 +331,7 @@
 									<label class="col-md-6 control-label" for="wohneigentum">Selbstgenutzes
 										Wohneigentum</label>
 									<div class="col-md-6">
-										<select id="wohneigentum" ng-model="wohneigentum"
+										<select id="wohneigentum" ng-model="model.wohneigentum"
 											name="wohneigentum" class="form-control">
 											<option value="" disabled selected>Bitte wählen Sie</option>
 											<option ng-repeat="item in wohneigentumListe"
@@ -345,7 +345,7 @@
 								<div class="form-group col-md-12">
 									<label class="col-md-6 control-label" for="taetigkeit">Tätigkeit</label>
 									<div class="col-md-6">
-										<select id="taetigkeit" ng-model="taetigkeit"
+										<select id="taetigkeit" ng-model="model.taetigkeit"
 											name="taetigkeit" class="form-control">
 											<option value="" disabled selected>Bitte wählen Sie</option>
 											<option ng-repeat="item in taetigkeiten" value="{{item.id}}">{{item.label}}</option>
@@ -359,7 +359,7 @@
 								<div class="form-group col-md-12">
 									<label class="col-md-6 control-label" for="branche">Branche</label>
 									<div class="col-md-6">
-										<select id="branche" ng-model="branche" name="branche"
+										<select id="branche" ng-model="model.branche" name="branche"
 											class="form-control">
 											<option value="" disabled selected>Bitte wählen Sie</option>
 											<option ng-repeat="item in branchen" value="{{item.id}}">{{item.label}}</option>
@@ -382,7 +382,7 @@
 										eine Schadenfreiheitsklasse übernehmen?</label>
 									<div class="col-md-6">
 										<select id="uebernahmeScheidenfreiheitsklasse"
-											ng-model="uebernahmeScheidenfreiheitsklasse"
+											ng-model="model.uebernahmeScheidenfreiheitsklasse"
 											name="uebernahmeScheidenfreiheitsklasse" class="form-control">
 											<option value="" disabled selected>Bitte wählen Sie</option>
 											<option
@@ -400,7 +400,7 @@
 										Ihrem bisherigen Fahrzeug?</label>
 									<div class="col-md-6">
 										<select id="verbleibBisherigesFahrzeug"
-											ng-model="verbleibBisherigesFahrzeug"
+											ng-model="model.verbleibBisherigesFahrzeug"
 											name="verbleibBisherigesFahrzeug" class="form-control">
 											<option value="" disabled selected>Bitte wählen Sie</option>
 											<option ng-repeat="item in verbleibeBisherigesFahrzeug"
@@ -418,20 +418,20 @@
 										<div class="radio">
 											<label for="fuehrerschein3Jahre-Ja"> <input
 												type="radio" name="fuehrerschein3Jahre"
-												ng-model="fuehrerschein3Jahre" id="fuehrerschein3Jahre-Ja"
+												ng-model="model.fuehrerschein3Jahre" id="fuehrerschein3Jahre-Ja"
 												value="ja" checked="checked">Ja
 											</label>
 										</div>
 										<div class="radio">
 											<label for="fahrzeugauswahl-1"> <input type="radio"
-												name="fuehrerschein3Jahre" ng-model="fuehrerschein3Jahre"
+												name="fuehrerschein3Jahre" ng-model="model.fuehrerschein3Jahre"
 												id="fuehrerschein3Jahre-Nein" value="nein">Nein
 											</label>
 										</div>
 									</div>
 								</div>
 								<div class="col-md-6">
-									<tt>fuehrerschein3Jahre = {{fuehrerschein3Jahre | json}}</tt>
+									<tt>fuehrerschein3Jahre = {{model.fuehrerschein3Jahre | json}}</tt>
 									<br />
 								</div>
 							</div>
@@ -442,7 +442,7 @@
 									<label class="col-md-6 control-label" for="kasko">Wünschen
 										Sie eine Kaskoversicherung?</label>
 									<div class="col-md-6">
-										<select id="kasko" ng-model="kasko" name="kasko"
+										<select id="kasko" ng-model="model.kasko" name="kasko"
 											class="form-control">
 											<option value="" disabled selected>Bitte wählen Sie</option>
 											<option ng-repeat="item in kaskoOptionen" value="{{item.id}}">{{item.label}}</option>
@@ -458,7 +458,7 @@
 									<label class="col-md-6 control-label" for="tarif">Gewünschter
 										Tarif</label>
 									<div class="col-md-6">
-										<select id="tarif" ng-model="tarif" name="tarif"
+										<select id="tarif" ng-model="model.tarif" name="tarif"
 											class="form-control">
 											<option value="" disabled selected>Bitte wählen Sie</option>
 											<option ng-repeat="item in tarife" value="{{item.id}}">{{item.label}}</option>
@@ -476,7 +476,7 @@
 										<div class="radio" ng-repeat="item in tarifoptionen">
 											<label for="tarifoption-{{item.id}}"> <input
 												type="checkbox" ng-click="toggleTarifoption(item.id)"
-												ng-checked="tarifoption.indexOf(item.id) > -1"
+												ng-checked="model.tarifoption.indexOf(item.id) > -1"
 												name="tarifoption" id="tarifoption-{{item.id}}"
 												value="{{item.label}}">{{item.label}}
 											</label>
@@ -484,7 +484,7 @@
 									</div>
 								</div>
 								<div class="col-md-6">
-									<tt>Nutzer = {{tarifoption}} | json</tt>
+									<tt>Nutzer = {{model.tarifoption}} | json</tt>
 									<br />
 								</div>
 							</div>
