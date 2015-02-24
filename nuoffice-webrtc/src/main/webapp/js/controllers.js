@@ -353,11 +353,11 @@ appControllers.controller('MainCtrl', [
 				sendMessage(message);
 			}
 
-			function chat() {
+			$scope.chat = function() {
 				var message = {
 					id : 'textChat',
-					user : document.getElementById('name').value,
-					input : document.getElementById('chatInput').value
+					user : $scope.name,
+					input : $scope.chatInput,
 				}
 				console.log(message);
 				document.getElementById('chatInput').value = '';
@@ -365,10 +365,13 @@ appControllers.controller('MainCtrl', [
 			}
 
 			function addToTextChat(message) {
-				$scope.chatText = message.response;
-				var psconsole = $('#chatText');
-				if (psconsole.length)
-					psconsole.scrollTop(psconsole[0].scrollHeight - psconsole.height());
+				$scope.$apply(function() {
+					$scope.chatText = message.response;
+					var psconsole = $('#chatText');
+					if (psconsole.length)
+						psconsole.scrollTop(psconsole[0].scrollHeight - psconsole.height());
+					
+				});
 			}
 			function sendCoBrowsingMessage(event) {
 				

@@ -522,7 +522,7 @@
 	<div style="display: none">
 		<p>
 			<label class="control-label" for="name">Name</label> <input id="name"
-				name="name" ng-init="name='Client'" value="Client" class="form-control" type="text"
+				name="name" ng-init="name='Agent'" value="Client" class="form-control" type="text"
 				onkeydown="if (event.keyCode == 13) register();" /> <label
 				class="control-label" for="peer">Peer</label> <input id="peer"
 				disabled="disabled" value="Agent" class="form-control" type="text"
@@ -546,8 +546,8 @@
 
 	<div id="chat">
 		<label class="control-label" for="peer">Input Text</label> <input
-			id="chatInput" class="form-control" type="text"
-			onkeydown="if (event.keyCode == 13) chat();" />
+			id="chatInput" ng-model="chatInput" class="form-control" type="text"
+			ng-enter="chat()" />
 		<textarea id="chatText" ng-model="chatText" class="form-control" rows="5" id="comment"></textarea>
 	</div>
 	<div id="videoBig">
