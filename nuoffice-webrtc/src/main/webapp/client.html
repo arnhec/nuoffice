@@ -38,7 +38,7 @@
 				<div style="display: none">
 					<p>
 						<label class="control-label" for="name">Name</label> <input
-							id="name" name="name" value="Client" class="form-control"
+							id="name" ng-init="name='Client'" name="name" value="Client" class="form-control"
 							type="text" onkeydown="if (event.keyCode == 13) register();" />
 						<label class="control-label" for="peer">Peer</label> <input
 							id="peer" disabled="disabled" value="Agent" class="form-control"
@@ -51,12 +51,11 @@
 			</div>
 			<div class="col-md-6">
 
-				<a id="register" href="#" class="btn btn-primary"
-					onclick="register(); return false;"><span
+				<a id="register" class="btn btn-primary" ng-click="register()"><span
 					class="glyphicon glyphicon-plus"></span> Register</a> <a id="call"
-					href="#" class="btn btn-success" onclick="call(); return false;"><span
+					class="btn btn-success" ng-click="call()"><span
 					class="glyphicon glyphicon-play"></span> Call</a> <a id="terminate"
-					href="#" class="btn btn-danger" onclick="stop(); return false;"><span
+					class="btn btn-danger" ng-click="stop()"><span
 					class="glyphicon glyphicon-stop"></span> Hangup</a>
 				<div class="checkbox">
 					<label> <input id="cobrowsing" type="checkbox" checked>

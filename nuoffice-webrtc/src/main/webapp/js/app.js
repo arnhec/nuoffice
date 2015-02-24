@@ -6,11 +6,14 @@ app.config([ '$routeProvider', function($routeProvider) {
 		controller : 'MainCtrl'
 	})
 	.when('/', {
-		templateUrl : 'partials/antrag.html',
+		templateUrl : 'partials/client.html',
 		controller : 'MainCtrl'
 	})
 	.when('/antrag', {
-		templateUrl : 'partials/antrag.html',
+		templateUrl : 'partials/client.html',
+		controller : 'MainCtrl'
+	}).when('/agent', {
+		templateUrl : 'partials/agent.html',
 		controller : 'MainCtrl'
 	}).otherwise({
 		redirectTo : '/'

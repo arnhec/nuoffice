@@ -116,7 +116,7 @@ window.onload = function() {
 	dragDrop.initElement('videoSmall');
 	videoInput = document.getElementById('videoInput');
 	videoOutput = document.getElementById('videoOutput');
-//	document.getElementById('name').focus();
+	document.getElementById('name').focus();
 	document.getElementById('chatInput').value = '';
 	document.getElementById('chatText').value = '';
 	$('#chatText').attr('disabled', true);

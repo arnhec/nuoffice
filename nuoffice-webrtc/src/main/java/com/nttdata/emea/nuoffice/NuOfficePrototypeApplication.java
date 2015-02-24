@@ -28,15 +28,18 @@ import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.socket.config.annotation.EnableWebSocket;
+import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
 import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry;
 
 import com.nttdata.emea.nuoffice.recognita.RecognitionService;
 
 
 @Configuration
+@EnableWebSocket
 @ComponentScan
 @EnableAutoConfiguration
-public class NuOfficePrototypeApplication extends SpringBootServletInitializer {
+public class NuOfficePrototypeApplication implements WebSocketConfigurer {
 	public static final String IP_ADRESS = "141.77.9.77";
 	final static String DEFAULT_KMS_WS_URI = "ws://"+IP_ADRESS+":8888/kurento";
 	
@@ -68,11 +71,11 @@ public class NuOfficePrototypeApplication extends SpringBootServletInitializer {
 	public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
 		registry.addHandler(callHandler(), "/call");
 	}
-	
-	@Override
-	protected SpringApplicationBuilder configure(
-			SpringApplicationBuilder application) {
-		return application.sources(NuOfficePrototypeApplication.class);
-	}
+//	
+//	@Override
+//	protected SpringApplicationBuilder configure(
+//			SpringApplicationBuilder application) {
+//		return application.sources(NuOfficePrototypeApplication.class);
+//	}
 
 }
