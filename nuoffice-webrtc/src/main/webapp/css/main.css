@@ -1,27 +1,25 @@
 @CHARSET "UTF-8";
 
 .CodeMirror {
-
 	line-height: 1.4;
 	height: 800px;
-	
 }
 
 .CodeMirror-linenumber.CodeMirror-gutter-elt {
 	padding: 0px;
 }
 
-
 .disabled {
-	color : transparent;
+	color: transparent;
 }
 
-form, fieldset{
-	padding : 20px;
+form, fieldset {
+	padding: 20px;
 }
+
 body {
 	background-color: white;
- }
+}
 
 .ng-table {
 	color: white;
@@ -33,26 +31,80 @@ body {
 	background-color: #6485C1;
 	border-color: #6485C1;
 	border-radius: 0px;
-	color : white;
+	color: white;
 }
+
 .navbar-inverse .navbar-brand {
-	color : white;
+	color: white;
 }
+
 .btn-primary {
 	background-color: #6485C1;
 	border-color: #6485C1;
 }
 
-.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:hover {
-	background-color: #6485C1; !important;
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:hover
+	{
+	background-color: #6485C1;
+	!
+	important;
 }
-
 
 .table>tbody>tr:hover {
 	background-color: green;
-
 }
 
 .table tr.selected {
 	background-color: green;
+}
+
+.myButton {
+	position: absolute;
+	-moz-border-radius: 35px;
+	border-radius: 35px;
+	filter: alpha(opacity = 80);
+	opacity: 0.8;
+	-webkit-transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	-ms-transition: all 0.5s ease;
+	transition: all 0.5s ease;
+	-moz-border-radius: 35px;
+	top: 90%;
+}
+
+.myButton-left {
+	margin-left: -30px;
+	left: 0px;
+}
+
+.myButton-left img {
+	width: 50px;
+	height: 50px;
+}
+
+.myButton-left:hover {
+	margin-left: 0px;
+	opacity: 1.0;
+	filter: alpha(opacity = 100); /* For IE8 and earlier */
+}
+
+.myButton-right img {
+	width: 50px;
+	height: 50px;
+}
+
+body {
+	overflow-x: hidden;
+}
+
+.myButton-right {
+	margin-right: -30px;
+	right: 1px;
+}
+
+.myButton-right:hover {
+	margin-right: 0px;
+	opacity: 1.0;
+	filter: alpha(opacity = 100); /* For IE8 and earlier */
 }
