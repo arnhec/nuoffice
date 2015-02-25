@@ -21,7 +21,6 @@ html {
 
 body {
 	padding-top: 40px;
-	body
 }
 
 textarea {
@@ -84,20 +83,28 @@ video {
 	z-index: 1;
 }
 
+div#videos {
+    position: relative;
+}
+
 div#videoSmall {
 /**	width: 240px;
 position: absolute;
 	top: 15px;
 	left: 400px;
 		height: 180px;**/
-	
+
+    position: absolute;
+    left: 0;
+    bottom: 0;
 	width:25%;
 	padding: 0px;
-	
-
 	cursor: pointer;
 	z-index: 10;
-	padding: 0px;
+}
+
+div#videoSmall video {
+    vertical-align: bottom;
 }
 
 div.dragged {

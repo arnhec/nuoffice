@@ -565,12 +565,13 @@
 		<textarea id="chatText" ng-disabled="true" ng-model="chatText" class="form-control"
 			rows="5" id="comment"></textarea>
 	</div>
-	<div id="videoBig">
-		<video id="videoOutput" autoplay width="640px" height="480px"
-			poster="./img/NTTD_Logo.jpg"></video>
-	</div>
-	<div id="videoSmall" ng-show="registerState == REG_STATES.REGISTERED && callState != CALL_STATES.NO_CALL">
-		<video id="videoInput" autoplay width="240px" height="180px"></video>
-	</div>
-
+    <div id="videos">
+        <div id="videoBig">
+            <video id="videoOutput" autoplay width="640px" height="480px"
+                   poster="./img/NTTD_Logo.jpg"></video>
+        </div>
+        <div id="videoSmall" ng-show="registerState == REG_STATES.REGISTERED && callState != CALL_STATES.NO_CALL">
+            <video id="videoInput" autoplay width="240px" height="180px"></video>
+        </div>
+    </div>
 </div>
