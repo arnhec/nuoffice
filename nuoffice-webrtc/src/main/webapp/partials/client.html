@@ -546,7 +546,7 @@
 
 	<div id="assistence" ng-show="model.cobrowsing">
 		<div id="chat">
-			<label class="control-label" for="peer">Input Text</label> <input
+			<label class="control-label" for="peer">Input Text</label> <input ng-disabled="registerState != REG_STATES.REGISTERED" 
 				id="chatInput" ng-model="chatInput" class="form-control" type="text"
 				ng-enter="chat()" />
 			<textarea id="chatText" ng-model="chatText" class="form-control"
@@ -556,7 +556,7 @@
 			<video id="videoOutput" autoplay width="640px" height="480px"
 				poster="./img/NTTD_Logo.jpg"></video>
 		</div>
-		<div id="videoSmall">
+		<div id="videoSmall" ng-show="registerState == REG_STATES.REGISTERED && callState != CALL_STATES.NO_CALL">
 			<video id="videoInput" autoplay width="240px" height="180px"></video>
 		</div>
 	</div>
