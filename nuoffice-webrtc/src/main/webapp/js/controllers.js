@@ -634,7 +634,13 @@ appControllers
                 e.preventDefault();
                 if ($scope.isValid(attrs)) {
                   $(element).tab('show');
-                  $scope.model.activeTab = attrs.name;
+                  if ($scope.$$phase) {
+                    $scope.model.activeTab = attrs.name;
+                  } else {
+                    $scope.$apply(function() {
+                      $scope.model.activeTab = attrs.name;
+                    });
+                  }
                 }
               }
 
