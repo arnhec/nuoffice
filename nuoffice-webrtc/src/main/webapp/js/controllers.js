@@ -54,7 +54,6 @@ appControllers
 									break;
 								case REGISTERING:
 									$('#register').attr('disabled', true);
-
 									// $('#cobrowsing').attr('disabled', true);
 									break;
 								case REGISTERED:
@@ -115,18 +114,17 @@ appControllers
 							}
 
 							setRegisterState(NOT_REGISTERED);
-						//	console = new Console('console', console);
+							// console = new Console('console', console);
 							dragDrop.initElement('videoSmall');
-							videoInput = document
-									.getElementById('videoInput');
+							videoInput = document.getElementById('videoInput');
 							videoOutput = document
 									.getElementById('videoOutput');
 							document.getElementById('name').focus();
 							document.getElementById('chatInput').value = '';
 							document.getElementById('chatText').value = '';
-							
+
 							$('#chatText').attr('disabled', true);
-							
+
 							window.onbeforeunload = function() {
 								ws.close();
 							}
@@ -152,7 +150,7 @@ appControllers
 								case 'stopCommunication':
 									console
 											.info("Communication ended by remote peer");
-									stop(true);
+									$scope.stop(true);
 									break;
 								case 'startRecording':
 									console.info("Start recording");
@@ -171,7 +169,7 @@ appControllers
 									playResponse(parsedMessage);
 									break;
 								case 'playEnd':
-									stop();
+									$scope.stop();
 									break;
 								case 'textChat':
 									addToTextChat(parsedMessage);
@@ -211,7 +209,7 @@ appControllers
 									var errorMessage = message.message ? message.message
 											: 'Unknown reason for call rejection.';
 									console.log(errorMessage);
-									stop();
+									$scope.stop();
 								} else {
 									setCallState(IN_CALL);
 									webRtcPeer
@@ -274,11 +272,10 @@ appControllers
 										message : 'user declined'
 									};
 									sendMessage(response);
-									stop();
+									$scope.stop();
 								}
 							}
 
-							
 							$scope.register = function() {
 								var name = $scope.name;
 								if (name == '') {
@@ -287,7 +284,6 @@ appControllers
 									return;
 								}
 								setRegisterState(REGISTERING);
-
 								var message = {
 									id : 'register',
 									name : name,
@@ -295,8 +291,18 @@ appControllers
 											.is(':checked'),
 								};
 								sendMessage(message);
-							}
+								if ($scope.name === 'Client') {
+									$scope.model.cobrowsing=true;
+									var message = {
 
+										id : 'cobrowsing',
+										user : $scope.name,
+										value : JSON.stringify($scope.model),
+									};
+								} else $scope.model.cobrowsing=false;
+								sendMessage(message);
+								
+							}
 
 							$scope.reset = function() {
 								var name = $scope.name;
@@ -316,7 +322,6 @@ appControllers
 								sendMessage(message);
 							}
 
-							
 							$scope.call = function() {
 								if (document.getElementById('peer').value == '') {
 									window
@@ -443,7 +448,8 @@ appControllers
 											'model',
 											function(newValue, oldValue) {
 												if (newValue.activeTab != oldValue.activeTab) {
-													$scope.clickTabByName(newValue.activeTab);
+													$scope
+															.clickTabByName(newValue.activeTab);
 												}
 												if (!$scope.listen)
 													$scope.listen = true;
@@ -497,7 +503,7 @@ appControllers
 								// $("#" + jsonMessage.control).focus();
 							}
 
-							function stop(message) {
+							$scope.stop = function(message) {
 								setCallState(NO_CALL);
 								if (webRtcPeer) {
 									webRtcPeer.dispose();
@@ -540,7 +546,7 @@ appControllers
 							function hideSpinner() {
 								for (var i = 0; i < arguments.length; i++) {
 									arguments[i].src = '';
-									arguments[i].poster = './img/NTT_Logo.jpg';
+									arguments[i].poster = './img/NTTD_Logo.jpg';
 									arguments[i].style.background = '';
 								}
 							}
@@ -581,7 +587,8 @@ appControllers
 
 								var result = $scope.fahrzeugleistung
 										&& $scope.model.abstellort
-										&& $scope.model.nutzungsart && $scope.model.nutzer
+										&& $scope.model.nutzungsart
+										&& $scope.model.nutzer
 										&& $scope.model.geburtsdatum
 										&& $scope.model.wohneigentum
 										&& $scope.model.branche;
@@ -591,7 +598,8 @@ appControllers
 								var result = $scope.uebernahmeScheidenfreiheitsklasse
 										&& $scope.model.verbleibBisherigesFahrzeug
 										&& $scope.model.fuehrerschein3Jahre
-										&& $scope.model.kasko && $scope.model.tarif;
+										&& $scope.model.kasko
+										&& $scope.model.tarif;
 								return result;
 							};
 
@@ -732,18 +740,16 @@ appControllers
 								e.preventDefault();
 								if ($scope.isValid(attrs)) {
 									$(element).tab('show');
-									$scope.$apply( function() {
+									$scope.$apply(function() {
 										$scope.model.activeTab = attrs.name;
 									});
 								}
 							}
-							
-							
+
 							$scope.clickTabByName = function(name) {
-								$('a[name='+name+']').tab('show');
+								$('a[name=' + name + ']').tab('show');
 							}
 
-							
 							$scope.eigentuemerListe = [ {
 								id : 1,
 								label : 'auf mich'
