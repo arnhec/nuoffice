@@ -17,8 +17,25 @@ public class ResultOptimizer<K> {
 	private static final Logger log = LoggerFactory
 			.getLogger(ResultOptimizer.class);
 
-	public static <K> String optimize(List<MatchResult<K>> matches, int threshold) {
+
+	private static final float M = 1.1f;
 	
+	public static <K> String amplify(List<MatchResult<K>> matches, int threshold) {
+		Map<String, Integer> counter = new HashMap<String, Integer>();
+		int i = 0;
+		for (MatchResult<K> r : matches) {
+			log.debug(r.getKey() + " - " + r.getName() + "=" + r.getLikelihoodRatio());
+		};
+		if (i<matches.size()) {
+				if (matches.get(i).getName().equalsIgnoreCase(matches.get(i+1).getName())) 
+						matches.get(i).setLikelihoodRatio((int) (matches.get(i).getLikelihoodRatio()*M));
+			}
+		
+		if (matches.get(0).getLikelihoodRatio()>=threshold) return matches.get(0).getName()+"_"+matches.get(0).getLikelihoodRatio(); return null;
+	}
+
+	
+	public static <K> String optimize(List<MatchResult<K>> matches, int threshold) {
 		Map<String, Integer> counter = new HashMap<String, Integer>();
 		for (MatchResult<K> r : matches) {
 			log.debug(r.getKey() + " - " + r.getName() + "=" + r.getLikelihoodRatio());
