@@ -43,7 +43,7 @@ public class RecognitionService {
 	private static final Logger log = LoggerFactory
 			.getLogger(RecognitionService.class);
 
-	private static final int THRESHOLD = 90;
+	private static final int THRESHOLD = 85;
 
 	// Create a new Recognito instance defining the audio sample rate to be
 	// used
@@ -106,7 +106,8 @@ public class RecognitionService {
 	}
 
 	public <K> String improveResult(List<MatchResult<K>> results, int threshold) {
-		return ResultOptimizer.optimize(results, threshold);
+//		return ResultOptimizer.optimize(results, threshold);
+		return ResultOptimizer.amplify(results, threshold);
 	}
 
 	public List<MatchResult<String>> matchPrints(File sample)
@@ -118,19 +119,22 @@ public class RecognitionService {
 		log.info("Format = " + srcFormat);
 		List<MatchResult<String>> results = recognito
 				.identify(readAudioInputStream(a1));
+		for (MatchResult<String> r : results) log.debug("Match result: " + r.getKey() + " " + r.getLikelihoodRatio());
 		return results;
 	}
 
 	public String verifySample(File sample)
 			throws UnsupportedAudioFileException, IOException {
 		List<MatchResult<String>> results = matchPrints(sample);
-		for (MatchResult<String> result : results) {
-			log.debug("Match result " + result.getKey() + " = "
-					+ result.getLikelihoodRatio());
-		}
-		if (results.get(0).getLikelihoodRatio() > THRESHOLD)
-			return results.get(0).getKey();
-		return null;
+//		String r = improveResult(results, THRESHOLD);
+		return results.size()>0 ? results.get(0).getKey() : null;
+//		for (MatchResult<String> result : results) {
+//			log.debug("Match result " + result.getKey() + " = "
+//					+ result.getLikelihoodRatio());
+//		}
+//		if (results.get(0).getLikelihoodRatio() > THRESHOLD)
+//			return results.get(0).getKey();
+//		return null;
 	}
 
 	public void addPrint(String userKey, String filename)
