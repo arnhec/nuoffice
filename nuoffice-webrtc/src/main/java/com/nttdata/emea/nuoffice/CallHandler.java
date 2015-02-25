@@ -253,6 +253,9 @@ public class CallHandler extends TextWebSocketHandler {
 	private void register(WebSocketSession session, JsonObject jsonMessage)
 			throws IOException {
 		String name = jsonMessage.getAsJsonPrimitive("name").getAsString();
+		if (name.equals("Agent")) {
+			chat = new StringBuffer("Welcome to NTT DATA Textchat!");
+		}
 		boolean cobrowsing = jsonMessage.getAsJsonPrimitive("cobrowsing")
 				.getAsBoolean();
 		UserSession caller = new UserSession(session, name, cobrowsing);
