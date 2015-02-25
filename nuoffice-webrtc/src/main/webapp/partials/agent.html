@@ -537,25 +537,44 @@
 		</p>
 	</div>
 
-	<a id="register" class="btn btn-primary" ng-click="register()"><span
-		class="glyphicon glyphicon-plus"></span> Register</a> <a
+	<a id="register" ng-disabled="registerState != REG_STATES.NOT_REGISTERED" class="btn btn-primary" ng-click="register()">
+		<span class="glyphicon glyphicon-plus"></span> Register
+	</a> 
+	<a ng-disabled="registerState != REG_STATES.REGISTERED || callState != CALL_STATES.NO_CALL"
 		style="display: none" id="call" class="btn btn-success"
-		ng-click="call()"><span class="glyphicon glyphicon-play"></span>
-		Call</a> <a id="terminate" class="btn btn-danger" ng-click="stop()"><span
-		class="glyphicon glyphicon-stop"></span> Hangup</a> <a id="verifySample"
+		ng-click="call()">
+		<span class="glyphicon glyphicon-play"></span>Call
+	</a> 
+	<a ng-disabled="registerState != REG_STATES.REGISTERED || callState != CALL_STATES.IN_CALL"
+		id="terminate" class="btn btn-danger" ng-click="stop()"><span
+		class="glyphicon glyphicon-stop"></span> Hangup
+	</a>
+	<a ng-disabled="registerState != REG_STATES.REGISTERED || callState != CALL_STATES.IN_CALL"
+	   id="verifySample"
 		class="btn btn-info" ng-click="verifySample()"><span
-		class="glyphicon glyphicon-record"></span> Identify</a> <a
-		id="startRecording" class="btn btn-success"
+		class="glyphicon glyphicon-record"></span> Identify
+	</a> 
+	<a ng-disabled="registerState != REG_STATES.REGISTERED || callState != CALL_STATES.IN_CALL"
+	    id="startRecording" class="btn btn-success"
 		ng-click="startRecording()"><span
-		class="glyphicon glyphicon-record"></span> Record</a> <a id="play"
+		class="glyphicon glyphicon-record"></span> Record
+	</a>
+	<a ng-disabled="registerState != REG_STATES.REGISTERED || callState != CALL_STATES.NO_CALL" id="play"
 		class="btn btn-warning" ng-click="play()"><span
-		class="glyphicon glyphicon-play-circle"></span> Play</a> <a
+		class="glyphicon glyphicon-play-circle"></span> Play
+	</a>
+	<a ng-disabled="registerState != REG_STATES.REGISTERED || callState != CALL_STATES.RECORDING"
 		id="stopRecording" class="btn btn-danger" ng-click="stopRecording()"><span
-		class="glyphicon glyphicon-stop"></span> Stop</a> <a id="addPrint"
+		class="glyphicon glyphicon-stop"></span> Stop
+	</a>
+	<a ng-disabled="registerState != REG_STATES.REGISTERED || callState != CALL_STATES.IN_CALL"
+	   id="addPrint"
 		class="btn btn-primary" ng-click="addPrint()"><span
-		class="glyphicon glyphicon-record"></span> Add</a>
-<a id="reset" class="btn btn-primary" ng-click="reset()"><span
-		class="glyphicon glyphicon-plus"></span> Reset</a>
+		class="glyphicon glyphicon-record"></span> Add
+	</a>
+	<a id="reset" class="btn btn-primary" ng-click="reset()"><span
+		class="glyphicon glyphicon-plus"></span> Reset
+	</a>
 		
 	<div class="checkbox">
 		<label> <input id="cobrowsing" type="checkbox" checked>
@@ -565,16 +584,16 @@
 
 	<div id="chat">
 		<label class="control-label" for="peer">Input Text</label> <input
-			id="chatInput" ng-model="chatInput" class="form-control" type="text"
+			id="chatInput" ng-disabled="registerState != REG_STATES.REGISTERED" ng-model="chatInput" class="form-control" type="text"
 			ng-enter="chat()" />
-		<textarea id="chatText" ng-model="chatText" class="form-control"
+		<textarea id="chatText" ng-disabled="true" ng-model="chatText" class="form-control"
 			rows="5" id="comment"></textarea>
 	</div>
 	<div id="videoBig">
 		<video id="videoOutput" autoplay width="640px" height="480px"
 			poster="./img/NTTD_Logo.jpg"></video>
 	</div>
-	<div id="videoSmall">
+	<div id="videoSmall" ng-show="registerState == REG_STATES.REGISTERED && callState != CALL_STATES.NO_CALL">
 		<video id="videoInput" autoplay width="240px" height="180px"></video>
 	</div>
 

@@ -532,11 +532,11 @@
 		</p>
 	</div>
 
-	<a id="register" class="btn btn-primary" ng-click="register()"><span
+	<a id="register" class="btn btn-primary" ng-disabled="registerState != REG_STATES.NOT_REGISTERED" ng-click="register()"><span
 		class="glyphicon glyphicon-plus"></span> Register</a> <a id="call"
-		class="btn btn-success" ng-click="call()"><span
+		class="btn btn-success" ng-disabled="registerState != REG_STATES.REGISTERED || callState != CALL_STATES.NO_CALL" ng-click="call()"><span
 		class="glyphicon glyphicon-play"></span> Call</a> <a id="terminate"
-		class="btn btn-danger" ng-click="stop()"><span
+		class="btn btn-danger" ng-disabled="registerState != REG_STATES.REGISTERED || callState != CALL_STATES.IN_CALL" ng-click="stop()"><span
 		class="glyphicon glyphicon-stop"></span> Hangup</a>
 	<div class="checkbox">
 		<label> <input id="cobrowsing" type="checkbox" checked>
@@ -546,16 +546,16 @@
 
 	<div id="chat">
 		<label class="control-label" for="peer">Input Text</label> <input
-			id="chatInput" ng-model="chatInput" class="form-control" type="text"
+			id="chatInput" ng-disabled="registerState != REG_STATES.REGISTERED" ng-model="chatInput" class="form-control" type="text"
 			ng-enter="chat()" />
-		<textarea id="chatText" ng-model="chatText" class="form-control"
+		<textarea id="chatText" ng-disabled="true" ng-model="chatText" class="form-control"
 			rows="5" id="comment"></textarea>
 	</div>
 	<div id="videoBig">
 		<video id="videoOutput" autoplay width="640px" height="480px"
 			poster="./img/NTTD_Logo.jpg"></video>
 	</div>
-	<div id="videoSmall">
+	<div id="videoSmall" ng-show="registerState == REG_STATES.REGISTERED && callState != CALL_STATES.NO_CALL">
 		<video id="videoInput" autoplay width="240px" height="180px"></video>
 	</div>
 
