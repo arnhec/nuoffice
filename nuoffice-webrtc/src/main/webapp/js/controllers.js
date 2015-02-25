@@ -278,6 +278,7 @@ appControllers
 								}
 							}
 
+							
 							$scope.register = function() {
 								var name = $scope.name;
 								if (name == '') {
@@ -294,9 +295,28 @@ appControllers
 											.is(':checked'),
 								};
 								sendMessage(message);
-								document.getElementById('peer').focus();
 							}
 
+
+							$scope.reset = function() {
+								var name = $scope.name;
+								if (name == '') {
+									window
+											.alert("You must insert your user name");
+									return;
+								}
+								setRegisterState(REGISTERING);
+
+								var message = {
+									id : 'reset',
+									name : name,
+									cobrowsing : $('#cobrowsing')
+											.is(':checked'),
+								};
+								sendMessage(message);
+							}
+
+							
 							$scope.call = function() {
 								if (document.getElementById('peer').value == '') {
 									window
