@@ -299,9 +299,10 @@ appControllers
 										user : $scope.name,
 										value : JSON.stringify($scope.model),
 									};
-								} else $scope.model.cobrowsing=false;
-								sendMessage(message);
-								
+									sendMessage(message);
+								} else {
+									$scope.model.cobrowsing=false;
+								}
 							}
 
 							$scope.reset = function() {
@@ -494,7 +495,8 @@ appControllers
 								$scope.$apply(function() {
 									$scope.listen = false;
 									var model = JSON.parse(jsonMessage.value, function(k, v) {
-										if (v && k && k.indexOf('datum')>=0) {
+										// hack - identify date objects
+										if (v && k && typeof(v) === 'string' && v.indexOf('.000Z')>=0) {
 											return new Date(v);
 										} 
 										return v;
