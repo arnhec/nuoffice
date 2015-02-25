@@ -502,11 +502,14 @@
 		<p>
 			<label class="control-label" for="name">Name</label> <input id="name"
 				name="name" ng-init="name='Agent'" value="Client"
-				class="form-control" type="text"
+				class="form-control" type="text" ng-model="name"
 				ng-enter="register()" /> <label
 				class="control-label" for="peer">Peer</label> <input id="peer"
-				disabled="disabled" value="Agent" class="form-control" type="text"
+				disabled="disabled" ng-model="peer" value="Agent" class="form-control" type="text"
 				ng-enter="call()">
+				<label class="control-label" for="recordId">Record id</label> <input id="recordId"
+				name="recordId" class="form-control" type="text" ng-model="recordId"
+				ng-enter="play()" /> 
 
 		</p>
 	</div>

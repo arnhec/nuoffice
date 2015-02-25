@@ -292,9 +292,9 @@ appControllers
                       console.log('Invoking SDP offer callback function');
                       var message = {
                         id : 'play',
-                        user : document.getElementById('name').value,
-                        callee : document.getElementById('peer').value,
-                        recordId : document.getElementById('recordId').value,
+                        user : $scope.name,
+                        callee : $scope.peer,
+                        recordId : $scope.recordId,
                         sdpOffer : offerSdp
                       };
                       sendMessage(message);
