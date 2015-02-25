@@ -36,25 +36,8 @@ appControllers
               
               $scope.REG_STATES = REG_STATES;
               $scope.CALL_STATES = CALL_STATES;
-              $scope.callState = CALL_STATES.NO_CALL;
 
               function setRegisterState(nextState) {
-                switch (nextState) {
-                case REG_STATES.NOT_REGISTERED:
-                  $('#videoSmall').hide();
-                  break;
-
-                case REG_STATES.REGISTERING:
-                  break;
-
-                case REG_STATES.REGISTERED:
-                  setCallState(CALL_STATES.NO_CALL);
-                  break;
-
-                default:
-                  return;
-                }
-                
                 $scope.registerState = nextState;
               }
 
@@ -63,6 +46,7 @@ appControllers
               }
 
               setRegisterState(REG_STATES.NOT_REGISTERED);
+              setCallState(CALL_STATES.NO_CALL);
               
               // console = new Console('console', console);
               dragDrop.initElement('videoSmall');
