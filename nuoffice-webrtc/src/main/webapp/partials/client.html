@@ -518,7 +518,7 @@
 		class="glyphicon glyphicon-play"></span> Call</a> <a id="terminate"
 		class="btn btn-danger" ng-disabled="registerState != REG_STATES.REGISTERED || callState != CALL_STATES.IN_CALL" ng-click="stop()"><span
 		class="glyphicon glyphicon-stop"></span> Hangup</a>
-	<div class="checkbox">
+	<div ng-show="false" class="checkbox">
 		<label> <input id="cobrowsing" type="checkbox" checked>
 			Co-browsing
 		</label>
@@ -526,7 +526,7 @@
 
 	<div id="assistence" ng-show="model.cobrowsing">
 		<div id="chat">
-			<label class="control-label" for="peer">Input Text</label> <input ng-disabled="registerState != REG_STATES.REGISTERED" 
+			<label class="control-label" for="peer">Type in here</label> <input ng-disabled="registerState != REG_STATES.REGISTERED" 
 				id="chatInput" ng-model="chatInput" class="form-control" type="text"
 				ng-enter="chat()" />
 			<textarea id="chatText" ng-disabled="true" ng-model="chatText" class="form-control"

@@ -827,3 +827,28 @@ appControllers
               };
 
             } ]);
+appControllers.controller('BtnCtrl', [
+                              		'$scope',
+                              		'$location',
+                              		function($scope, $location) {
+
+                              			$scope.screens = [ '/slides', '/antrag', '/agent' ];
+                              			$scope.activeScreen = 0;
+
+                              			$scope.toggleScreenLeft = function() {
+                              				$scope.activeScreen = ($scope.activeScreen - 1);
+                              				if ($scope.activeScreen < 0) $scope.activeScreen = $scope.screens.length-1;
+                              				console.log($scope.activeScreen);
+                              				$scope.path = $scope.screens[$scope.activeScreen];
+                              			}
+                              			$scope.toggleScreenRight = function() {
+                              				$scope.activeScreen = ($scope.activeScreen + 1)
+                              						% $scope.screens.length;
+                              				console.log($scope.activeScreen);
+                              				$scope.path = $scope.screens[$scope.activeScreen];
+                              			}
+                              			$scope.$watch('path', function(newValue, oldValue) {
+                              				console.log(newValue);
+                              				$location.path(newValue);
+                              			});
+                              		} ]);

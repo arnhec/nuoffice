@@ -57,6 +57,15 @@
 			<div class="col-md-12" ng-view></div>
 		</div>
 	</div>
-
+	<div class="myButtons">
+		<a class="myButton myButton-left" role="button"
+			ng-controller="BtnCtrl" ng-click="toggleScreenLeft()" id="homeButton"
+			type="button" class="btn glyphicon glyphicon-arrow-left"><img
+			src="img/arrow_button_metal_silver_left.png" /></a> <a
+			class="myButton myButton-right" role="button" ng-controller="BtnCtrl"
+			ng-click="toggleScreenRight()" id="homeButton" type="button"
+			class="btn glyphicon glyphicon-arrow-left"><img
+			src="img/arrow_button_metal_silver_right.png" /></a>
+	</div>
 </body>
 </html>
