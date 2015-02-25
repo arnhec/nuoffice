@@ -52,11 +52,9 @@ public class CallHandler extends TextWebSocketHandler {
 
 	private static final long DEFAULT_RECORD_PERIOD = 5000;
 
-	private static final long DEFAULT_SAMPLE_PERIOD = 2000;
+	private static final long DEFAULT_SAMPLE_PERIOD = 5000;
 
 	private static final String DIR = "/tmp/";
-
-
 
 	private ConcurrentHashMap<String, CallMediaPipeline> pipelines = new ConcurrentHashMap<String, CallMediaPipeline>();
 
@@ -69,11 +67,13 @@ public class CallHandler extends TextWebSocketHandler {
 	@Autowired
 	private RecognitionService recognitoService;
 
-	public CallHandler () {
+	public CallHandler() {
 		super();
-		File dir = new File(DIR+"");
-		if (!dir.exists()) dir.mkdirs();
+		File dir = new File(DIR + "");
+		if (!dir.exists())
+			dir.mkdirs();
 	}
+
 	@Override
 	public void handleTextMessage(WebSocketSession session, TextMessage message)
 			throws Exception {
@@ -186,11 +186,12 @@ public class CallHandler extends TextWebSocketHandler {
 					+ System.getProperty("java.library.path"));
 			log.info("Read file " + recordId + ".webm from media server");
 			new ScpFrom().read(new String[] {
-					"chris@"+NuOfficePrototypeApplication.IP_ADRESS+":" + DIR + recordId + ".webm",
+					"chris@" + NuOfficePrototypeApplication.IP_ADRESS + ":"
+							+ DIR + recordId + ".webm",
 					DIR + recordId + ".webm" });
 			String printId = caller + "_" + recordId;
-			new Decoder().process(DIR + recordId + ".webm",DIR
-					+ printId + ".wav");
+			new Decoder().process(DIR + recordId + ".webm", DIR + printId
+					+ ".wav");
 			String responseMsg = "accepted";
 			response.addProperty("id", "addPrint");
 			response.addProperty("recordId", recordId);
@@ -234,9 +235,10 @@ public class CallHandler extends TextWebSocketHandler {
 						"c:/tmp/" + recordId + ".webm" });
 				new Decoder().process("c:/tmp/" + recordId + ".webm", "c:/tmp/"
 						+ recordId + ".wav");
-				result = recognitoService.verifySample(new File(
-						"c:/tmp/" + recordId + ".wav"));
-			} while (result == null && count++ < 5);
+				result = recognitoService.verifySample(new File("c:/tmp/"
+						+ recordId + ".wav"));
+				log.info(result+ "identified as customer");
+			} while (result == null && count++ < 1);
 			String responseMsg = result != null ? result.split("_")[0]
 					: "unknown";
 			response.addProperty("id", "verifySample");
@@ -281,10 +283,12 @@ public class CallHandler extends TextWebSocketHandler {
 
 	}
 
-	private void reset(WebSocketSession session, JsonObject jsonMessage) throws IOException {
+	private void reset(WebSocketSession session, JsonObject jsonMessage)
+			throws IOException {
 		registry.reset();
-		register(session,jsonMessage);
+		register(session, jsonMessage);
 	}
+
 	private void call(UserSession caller, JsonObject jsonMessage)
 			throws IOException {
 		String to = jsonMessage.get("to").getAsString();
