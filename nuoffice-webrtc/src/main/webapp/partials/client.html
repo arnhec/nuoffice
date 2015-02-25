@@ -88,7 +88,7 @@
 										<select id="fahrzeugart" ng-model="model.fahrzeugart"
 											name="fahrzeugart" class="form-control">
 											<option value="" disabled selected>Bitte wählen Sie</option>
-											<option ng-repeat="item in fahrzeugarten" value="1">{{item.label}}</option>
+											<option ng-repeat="item in fahrzeugarten" value="{{item.id}}">{{item.label}}</option>
 										</select>
 									</div>
 								</div>
