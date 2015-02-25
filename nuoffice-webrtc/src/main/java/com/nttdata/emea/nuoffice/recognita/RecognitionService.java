@@ -76,7 +76,7 @@ public class RecognitionService {
 		;
 	}
 
-	private static String DIR = "c:/tmp/prints/";
+	private static String DIR = "/tmp/prints/";
 
 	private static final Logger log = LoggerFactory
 			.getLogger(RecognitionService.class);

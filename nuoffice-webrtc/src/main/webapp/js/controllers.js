@@ -467,7 +467,12 @@ appControllers
 								console.log(jsonMessage);
 								$scope.$apply(function() {
 									$scope.listen = false;
-									var model = JSON.parse(jsonMessage.value);
+									var model = JSON.parse(jsonMessage.value, function(k, v) {
+										if (v && k && k.indexOf('datum')>=0) {
+											return new Date(v);
+										} 
+										return v;
+									});
 									$scope.model = model;
 								});
 
