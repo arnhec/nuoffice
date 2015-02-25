@@ -1,5 +1,5 @@
 
-<div class="col-md-6">
+<div class="col-md-6 well">
 	<form class="form-horizontal" name="form">
 
 		<!-- Form Name -->
@@ -298,12 +298,14 @@
 									<label class="col-md-6 control-label" for="nutzer">Wer
 										fährt das Fahrzeug</label>
 									<div class="col-md-6">
-										<div class="col-md-12" ng-repeat="item in nutzerListe">
-											<input id="nutzer-{{item.id}}" class="" type="checkbox"
-												ng-click="toggleNutzer(item.id)"
-												ng-checked="model.nutzer.indexOf(item.id) > -1" name="nutzer"
-												id="nutzer-{{item.id}}" value="{{item.label}}" /> <label
-												for="nutzer-{{item.id}}">{{item.label}}</label>
+										<div class="col-md-12 checkbox" ng-repeat="item in nutzerListe">
+											<label for="nutzer-{{item.id}}">
+                                                <input id="nutzer-{{item.id}}" class="" type="checkbox"
+                                                       ng-click="toggleNutzer(item.id)"
+                                                       ng-checked="model.nutzer.indexOf(item.id) > -1" name="nutzer"
+                                                       id="nutzer-{{item.id}}" value="{{item.label}}" />
+                                                {{item.label}}
+                                            </label>
 										</div>
 									</div>
 								</div>
@@ -473,7 +475,7 @@
 									<label class="col-md-6 control-label" for="nutzer">Weitere
 										Optionen</label>
 									<div class="col-md-6">
-										<div class="radio" ng-repeat="item in tarifoptionen">
+										<div class="checkbox" ng-repeat="item in tarifoptionen">
 											<label for="tarifoption-{{item.id}}"> <input
 												type="checkbox" ng-click="toggleTarifoption(item.id)"
 												ng-checked="model.tarifoption.indexOf(item.id) > -1"
@@ -497,21 +499,14 @@
 				</div>
 
 			</div>
-			<div class="row">
-				<div class="form-group col-md-4">
-					<label class="col-md-6 control-label" for="zurueck"></label>
-					<div class="col-md-6">
-						<button id="zurueck" name="zurück" ng-click="zurueck()"
-							ng-show="activeTab!='situation'" class="btn btn-primary">Zurück</button>
-					</div>
-				</div>
-				<div class="form-group col-md-1">
-					<label class="col-md-6 control-label" for="weiter"></label>
-					<div class="col-md-6">
-						<button id="weiter" name="weiter" ng-show="activeTab!='ergebnis'"
-							ng-click="weiter()" ng-disabled="!weiterEnabled()"
-							class="btn btn-primary">Weiter</button>
-					</div>
+			<div class="row text-center">
+				<div class="btn-group">
+                    <button id="zurueck" name="zurück" ng-click="zurueck()"
+                        ng-show="activeTab!='situation'" class="btn btn-primary">Zurück</button>
+
+                    <button id="weiter" name="weiter" ng-show="activeTab!='ergebnis'"
+                            ng-click="weiter()" ng-disabled="!weiterEnabled()"
+                            class="btn btn-primary">Weiter</button>
 				</div>
 			</div>
 		</div>
