@@ -40,6 +40,12 @@ public class UserRegistry {
 		usersBySessionId.put(user.getSession().getId(), user);
 		usersByCobrowsing.put(user.getSession().getId(), user);
 	}
+	
+	public void reset() {
+		usersByName.clear();
+		usersBySessionId.clear();
+		usersByCobrowsing.clear();
+	}
 
 	public UserSession getByName(String name) {
 		return usersByName.get(name);
@@ -58,6 +64,7 @@ public class UserRegistry {
 		if (user != null) {
 			usersByName.remove(user.getName());
 			usersBySessionId.remove(session.getId());
+			usersByCobrowsing.remove(session.getId());
 		}
 		return user;
 	}

@@ -38,16 +38,23 @@ import com.sun.media.sound.WaveFileWriter;
 public class RecognitionService {
 
 	private static final float SAMPLE_RATE = 16000.0f;
+	private static String DIR = "/tmp/prints/";
+
+	private static final Logger log = LoggerFactory
+			.getLogger(RecognitionService.class);
+
+	private static final int THRESHOLD = 90;
 
 	// Create a new Recognito instance defining the audio sample rate to be
 	// used
 	Recognito<String> recognito = new Recognito<String>(SAMPLE_RATE);
 
-
-	public RecognitionService()
-			throws UnsupportedAudioFileException, IOException {
+	public RecognitionService() throws UnsupportedAudioFileException,
+			IOException {
 		super();
-		loadPrintsFromDisc(new File(DIR),null);
+		File f = new File(DIR);
+		if (!f.exists()) f.mkdirs();
+		loadPrintsFromDisc(new File(DIR), null);
 	}
 
 	public void loadPrintsFromDisc(File file, File except) {
@@ -60,7 +67,8 @@ public class RecognitionService {
 		};
 		for (File f : file.listFiles(filter)) {
 			try {
-//				System.out.println(f.getAbsolutePath() + " ? " + except.getAbsolutePath());
+				// System.out.println(f.getAbsolutePath() + " ? " +
+				// except.getAbsolutePath());
 				if (except == null
 						|| !except.getAbsolutePath()
 								.equals(f.getAbsolutePath()))
@@ -75,13 +83,6 @@ public class RecognitionService {
 		}
 		;
 	}
-
-	private static String DIR = "/tmp/prints/";
-
-	private static final Logger log = LoggerFactory
-			.getLogger(RecognitionService.class);
-
-	private static final int THRESHOLD = 90;
 
 	public void addPrint(String key, File file, boolean copy)
 			throws UnsupportedAudioFileException, IOException {

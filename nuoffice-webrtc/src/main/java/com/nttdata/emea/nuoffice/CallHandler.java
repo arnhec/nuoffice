@@ -16,6 +16,7 @@ package com.nttdata.emea.nuoffice;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.kurento.client.factory.KurentoClient;
@@ -53,6 +54,8 @@ public class CallHandler extends TextWebSocketHandler {
 
 	private static final long DEFAULT_SAMPLE_PERIOD = 2000;
 
+	private static final String DIR = "/tmp/";
+
 
 
 	private ConcurrentHashMap<String, CallMediaPipeline> pipelines = new ConcurrentHashMap<String, CallMediaPipeline>();
@@ -66,6 +69,11 @@ public class CallHandler extends TextWebSocketHandler {
 	@Autowired
 	private RecognitionService recognitoService;
 
+	public CallHandler () {
+		super();
+		File dir = new File(DIR+"");
+		if (!dir.exists()) dir.mkdirs();
+	}
 	@Override
 	public void handleTextMessage(WebSocketSession session, TextMessage message)
 			throws Exception {
@@ -83,6 +91,9 @@ public class CallHandler extends TextWebSocketHandler {
 		switch (jsonMessage.get("id").getAsString()) {
 		case "register":
 			register(session, jsonMessage);
+			break;
+		case "reset":
+			reset(session, jsonMessage);
 			break;
 		case "call":
 			call(user, jsonMessage);
@@ -175,10 +186,10 @@ public class CallHandler extends TextWebSocketHandler {
 					+ System.getProperty("java.library.path"));
 			log.info("Read file " + recordId + ".webm from media server");
 			new ScpFrom().read(new String[] {
-					"chris@"+NuOfficePrototypeApplication.IP_ADRESS+":/tmp/" + recordId + ".webm",
-					"c:/tmp/" + recordId + ".webm" });
+					"chris@"+NuOfficePrototypeApplication.IP_ADRESS+":" + DIR + recordId + ".webm",
+					DIR + recordId + ".webm" });
 			String printId = caller + "_" + recordId;
-			new Decoder().process("c:/tmp/" + recordId + ".webm", "c:/tmp/"
+			new Decoder().process(DIR + recordId + ".webm",DIR
 					+ printId + ".wav");
 			String responseMsg = "accepted";
 			response.addProperty("id", "addPrint");
@@ -267,6 +278,10 @@ public class CallHandler extends TextWebSocketHandler {
 
 	}
 
+	private void reset(WebSocketSession session, JsonObject jsonMessage) throws IOException {
+		registry.reset();
+		register(session,jsonMessage);
+	}
 	private void call(UserSession caller, JsonObject jsonMessage)
 			throws IOException {
 		String to = jsonMessage.get("to").getAsString();
