@@ -15,7 +15,9 @@ app.config([ '$routeProvider', function($routeProvider) {
 	}).when('/agent', {
 		templateUrl : 'partials/agent.html',
 		controller : 'MainCtrl'
-	}).otherwise({
+	}).when('/slides', {
+        templateUrl: 'partials/slides.html'
+    }).otherwise({
 		redirectTo : '/'
 	});
 } ]);
