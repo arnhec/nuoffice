@@ -348,14 +348,12 @@ appControllers
               }
 
               function addToTextChat(message) {
-                $scope.$apply(function() {
-                  $scope.chatText = message.response;
-                  var psconsole = $('#chatText');
-                  if (psconsole.length)
-                    psconsole.scrollTop(psconsole[0].scrollHeight
-                        - psconsole.height());
+                $scope.chatText = message.response;
+                var psconsole = $('#chatText');
+                if (psconsole.length)
+                  psconsole.scrollTop(psconsole[0].scrollHeight
+                      - psconsole.height());
 
-                });
               }
 
               /**
@@ -408,20 +406,19 @@ appControllers
 
               function receiveCobrowsingMessage(jsonMessage) {
                 console.log(jsonMessage);
-                $scope.$apply(function() {
-                  $scope.listen = false;
-                  var model = JSON.parse(jsonMessage.value, function(k, v) {
-                    // hack -
-                    // identify date
-                    // objects
-                    if (v && k && typeof (v) === 'string'
-                        && v.indexOf('.000Z') >= 0) {
-                      return new Date(v);
-                    }
-                    return v;
-                  });
-                  $scope.model = model;
+
+                $scope.listen = false;
+                var model = JSON.parse(jsonMessage.value, function(k, v) {
+                  // hack -
+                  // identify date
+                  // objects
+                  if (v && k && typeof (v) === 'string'
+                      && v.indexOf('.000Z') >= 0) {
+                    return new Date(v);
+                  }
+                  return v;
                 });
+                $scope.model = model;
               }
 
               $scope.stop = function(message) {

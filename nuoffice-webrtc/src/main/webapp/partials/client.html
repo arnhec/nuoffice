@@ -549,7 +549,7 @@
 			<label class="control-label" for="peer">Input Text</label> <input ng-disabled="registerState != REG_STATES.REGISTERED" 
 				id="chatInput" ng-model="chatInput" class="form-control" type="text"
 				ng-enter="chat()" />
-			<textarea id="chatText" ng-model="chatText" class="form-control"
+			<textarea id="chatText" ng-disabled="true" ng-model="chatText" class="form-control"
 				rows="5" id="comment"></textarea>
 		</div>
 		<div id="videoBig">
