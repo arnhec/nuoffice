@@ -167,11 +167,6 @@
 											</select>
 										</div>
 									</div>
-									<div class="col-md-6">
-										<tt>Hersteller = {{model.hersteller | json}}</tt>
-										<br />
-									</div>
-
 								</div>
 								<!-- Select Basic -->
 								<div class="row">
@@ -186,10 +181,6 @@
 													value="{{item.id}}">{{item.label}}</option>
 											</select>
 										</div>
-									</div>
-									<div class="col-md-6">
-										<tt>Modell = {{model.modell| json}}</tt>
-										<br />
 									</div>
 								</div>
 								<!-- Select Basic -->
@@ -308,10 +299,6 @@
 											<label for="nutzer-{{item.id}}">{{item.label}}</label>
 										</div>
 									</div>
-								</div>
-								<div class="col-md-6">
-									<tt>Nutzer = {{model.nutzer}} | json</tt>
-									<br />
 								</div>
 							</div>
 							<!-- Text input-->
@@ -433,11 +420,6 @@
 										</div>
 									</div>
 								</div>
-								<div class="col-md-6">
-									<tt>fuehrerschein3Jahre = {{model.fuehrerschein3Jahre |
-										json}}</tt>
-									<br />
-								</div>
 							</div>
 
 							<!-- Select Basic -->
@@ -487,10 +469,6 @@
 										</div>
 									</div>
 								</div>
-								<div class="col-md-6">
-									<tt>Tarifoption = {{model.tarifoption}} | json</tt>
-									<br />
-								</div>
 							</div>
 
 						</div>
@@ -501,17 +479,13 @@
 				</div>
 
 			</div>
-			<div class="row">
-				<div class="form-group col-md-4">
-					<label class="col-md-6 control-label" for="zurueck"></label>
-					<div class="col-md-6">
-						<button id="zurueck" name="zurück" ng-click="zurueck()"
+				<div class="row">
+				<div class="form-group col-md-12">
+					<div class="col-md-6" style="text-align:center">
+						<button id="zurueck"  name="zurück" ng-click="zurueck()"
 							ng-show="activeTab!='situation'" class="btn btn-primary">Zurück</button>
 					</div>
-				</div>
-				<div class="form-group col-md-1">
-					<label class="col-md-6 control-label" for="weiter"></label>
-					<div class="col-md-6">
+					<div class="col-md-6" style="text-align:center">
 						<button id="weiter" name="weiter" ng-show="activeTab!='ergebnis'"
 							ng-click="weiter()" ng-disabled="!weiterEnabled()"
 							class="btn btn-primary">Weiter</button>
@@ -529,10 +503,10 @@
 			<label class="control-label" for="name">Name</label> <input id="name"
 				name="name" ng-init="name='Agent'" value="Client"
 				class="form-control" type="text"
-				onkeydown="if (event.keyCode == 13) register();" /> <label
+				ng-enter="register()" /> <label
 				class="control-label" for="peer">Peer</label> <input id="peer"
 				disabled="disabled" value="Agent" class="form-control" type="text"
-				onkeydown="if (event.keyCode == 13) call();">
+				ng-enter="call()">
 
 		</p>
 	</div>
@@ -576,7 +550,7 @@
 		class="glyphicon glyphicon-plus"></span> Reset
 	</a>
 		
-	<div class="checkbox">
+	<div ng-show="false" class="checkbox">
 		<label> <input id="cobrowsing" type="checkbox" checked>
 			Co-browsing
 		</label>
