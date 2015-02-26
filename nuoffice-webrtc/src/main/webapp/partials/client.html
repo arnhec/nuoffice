@@ -1,5 +1,5 @@
 
-<div class="col-md-6 well">
+<div class="col-md-8 well">
 	<form class="form-horizontal" name="form">
 
 		<!-- Form Name -->
@@ -497,7 +497,7 @@
 		</div>
 	</form>
 </div>
-<div class="col-md-6">
+<div class="col-md-4">
 
 	<div style="display: none">
 		<p>
@@ -514,9 +514,10 @@
 
 	<a id="register" class="btn btn-primary" ng-disabled="registerState != REG_STATES.NOT_REGISTERED" ng-click="register()"><span
 		class="glyphicon glyphicon-plus"></span> Get Help</a> <a id="call"
-		class="btn btn-success" ng-disabled="registerState != REG_STATES.REGISTERED || callState != CALL_STATES.NO_CALL" ng-click="call()"><span
-		class="glyphicon glyphicon-play"></span> Call</a> <a id="terminate"
-		class="btn btn-danger" ng-disabled="registerState != REG_STATES.REGISTERED || callState != CALL_STATES.IN_CALL" ng-click="stop()"><span
+		class="btn btn-success" ng-show="registerState == REG_STATES.REGISTERED && callState == CALL_STATES.NO_CALL" ng-click="call()"><span
+		class="glyphicon glyphicon-play"></span> 
+		start Video call</a> <a id="terminate"
+		class="btn btn-danger" ng-show="registerState == REG_STATES.REGISTERED && callState == CALL_STATES.IN_CALL" ng-click="stop()"><span
 		class="glyphicon glyphicon-stop"></span> Hangup</a>
 	<div ng-show="false" class="checkbox">
 		<label> <input id="cobrowsing" type="checkbox" checked>
@@ -524,17 +525,17 @@
 		</label>
 	</div>
 
-	<div id="assistence" ng-show="model.cobrowsing">
+	<div id="assistence" ng-show="model.cobrowsing" style="margin-top:1em">
 		<div id="chat">
-			<label class="control-label" for="peer">Type in here</label> <input ng-disabled="registerState != REG_STATES.REGISTERED" 
+			<label class="control-label" for="peer">Type in your question:</label> <input ng-disabled="registerState != REG_STATES.REGISTERED" 
 				id="chatInput" ng-model="chatInput" class="form-control" type="text"
 				ng-enter="chat()" />
-			<textarea id="chatText" ng-disabled="true" ng-model="chatText" class="form-control"
-				rows="5" id="comment"></textarea>
+			<textarea id="chatText" style="margin-top:1em;background-color: #f9f9f9;padding:5px;"  ng-disabled="true" ng-model="chatText" class="form-control"
+				rows="4" id="comment"></textarea>
 		</div>
         <div id="videos">
             <div id="videoBig">
-                <video id="videoOutput" autoplay width="640px" height="480px"
+                <video id="videoOutput" autoplay width="100%" height="100%"
                        poster="./img/NTTD_Logo.jpg"></video>
             </div>
             <div id="videoSmall" ng-show="registerState == REG_STATES.REGISTERED && callState != CALL_STATES.NO_CALL">
