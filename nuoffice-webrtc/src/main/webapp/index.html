@@ -27,9 +27,10 @@
 <script type="text/javascript" src="/lib/jquery-2.1.3.min.js"></script>
 <script type="text/javascript" src="/lib/bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
 
-<script type="text/javascript" src="/lib/angular-1.4.0-beta.4/angular.js"></script>
-<script type="text/javascript" src="/lib/angular-1.4.0-beta.4/angular-route.js"></script>
-<script type="text/javascript" src="/lib/angular-1.4.0-beta.4/angular-resource.js"></script>
+<script type="text/javascript" src="/lib/angular-1.4.0-beta.4/angular.min.js"></script>
+<script type="text/javascript" src="/lib/angular-1.4.0-beta.4/angular-route.min.js"></script>
+<script type="text/javascript" src="/lib/angular-1.4.0-beta.4/angular-resource.min.js"></script>
+<script type="text/javascript" src="/lib/angular-1.4.0-beta.4/angular-touch.min.js"></script>
 
 
 <script src="/js/directives.js"></script>
@@ -50,22 +51,22 @@
 </head>
 
 
-<body>
+<body ng-controller="BtnCtrl" ng-swipe-left="toggleScreenLeft()" ng-swipe-right="toggleScreenRight()">
 	<div class="container-fluid">
 		<div class="row">
 			
 			<div class="col-md-12" ng-view></div>
 		</div>
 	</div>
-	<div class="myButtons">
+	<!-- <div ng-controller="BtnCtrl" class="myButtons">
 		<a class="myButton myButton-left" role="button"
-			ng-controller="BtnCtrl" ng-click="toggleScreenLeft()" id="homeButton"
+			 ng-click="toggleScreenLeft()" id="homeButton"
 			type="button" class="btn glyphicon glyphicon-arrow-left"><img
-			src="img/arrow_button_metal_silver_left.png" /></a> <a
-			class="myButton myButton-right" role="button" ng-controller="BtnCtrl"
+			src="img/arrow_button_metal_silver_left.png" /></a> 
+		<a 	class="myButton myButton-right" role="button" 
 			ng-click="toggleScreenRight()" id="homeButton" type="button"
 			class="btn glyphicon glyphicon-arrow-left"><img
 			src="img/arrow_button_metal_silver_right.png" /></a>
-	</div>
+	</div> -->
 </body>
 </html>

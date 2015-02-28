@@ -1,5 +1,5 @@
 
-<div class="col-md-8 well">
+<div class="col-md-7 well">
 	<form class="form-horizontal" name="form">
 
 		<!-- Form Name -->
@@ -11,7 +11,7 @@
 			<ul class="nav nav-tabs">
 				<!-- Button -->
 				<li class="active"><a name="situation" showtab
-					href="#situation">1. Situation klären</a></li>
+					href="#situation">1. Situation</a></li>
 				<li><a name="tarifmerkmale" showtab
 					ng-class="{disabled: !situationValid()}" href="#tarifmerkmale">2.
 						Tarifmerkmale</a></li>
@@ -497,7 +497,7 @@
 		</div>
 	</form>
 </div>
-<div class="col-md-4">
+<div class="col-md-5">
 
 	<div style="display: none">
 		<p>
@@ -526,17 +526,16 @@
 	</div>
 
 	<div id="assistence" ng-show="model.cobrowsing" style="margin-top:1em">
-		<div id="chat">
+		<div id="chat" >
 			<label class="control-label" for="peer">Type in your question:</label> <input ng-disabled="registerState != REG_STATES.REGISTERED" 
 				id="chatInput" ng-model="chatInput" class="form-control" type="text"
 				ng-enter="chat()" />
-			<textarea id="chatText" style="margin-top:1em;background-color: #f9f9f9;padding:5px;"  ng-disabled="true" ng-model="chatText" class="form-control"
+			<textarea id="chatText" ng-disabled="true" ng-model="chatText" class="form-control"
 				rows="4" id="comment"></textarea>
 		</div>
         <div id="videos">
             <div id="videoBig">
-                <video id="videoOutput" autoplay width="100%" height="100%"
-                       poster="./img/NTTD_Logo.jpg"></video>
+                <video id="videoOutput" autoplay width="100%" poster="./img/NTTD_Logo.jpg"></video>
             </div>
             <div id="videoSmall" ng-show="registerState == REG_STATES.REGISTERED && callState != CALL_STATES.NO_CALL">
                 <video id="videoInput" autoplay></video>

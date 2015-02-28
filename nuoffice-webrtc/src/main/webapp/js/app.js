@@ -1,4 +1,4 @@
-var app = angular.module('app', [ 'ngRoute', 'controllers', 'directives', 'services' ]);
+var app = angular.module('app', [ 'ngRoute', 'controllers', 'directives', 'services', 'ngTouch' ]);
 
 app.config([ '$routeProvider', function($routeProvider) {
 	$routeProvider.when('', {

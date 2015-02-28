@@ -40,7 +40,8 @@ import com.nttdata.emea.nuoffice.recognita.RecognitionService;
 @ComponentScan
 @EnableAutoConfiguration
 public class NuOfficePrototypeApplication implements WebSocketConfigurer {
-	public static final String IP_ADRESS = "141.77.9.77";
+//	public static final String IP_ADRESS = "192.168.1.105";
+	public static final String IP_ADRESS = "localhost";
 	final static String DEFAULT_KMS_WS_URI = "ws://"+IP_ADRESS+":8888/kurento";
 	
 	@Bean

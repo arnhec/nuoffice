@@ -1,5 +1,5 @@
 
-<div class="col-md-6 well">
+<div class="col-md-7 well">
 	<form ng-show="model.cobrowsing" class="form-horizontal" name="form">
 
 		<!-- Form Name -->
@@ -11,7 +11,7 @@
 			<ul class="nav nav-tabs">
 				<!-- Button -->
 				<li class="active"><a name="situation" showtab
-					href="#situation">1. Situation klären</a></li>
+					href="#situation">1. Situation</a></li>
 				<li><a name="tarifmerkmale" showtab
 					ng-class="{disabled: !situationValid()}" href="#tarifmerkmale">2.
 						Tarifmerkmale</a></li>
@@ -493,8 +493,9 @@
             </div>
 		</div>
 	</form>
+	
 </div>
-<div class="col-md-6">
+<div class="col-md-5">
 
 
 	<div style="display: none">
@@ -525,7 +526,7 @@
 		id="terminate" class="btn btn-danger" ng-click="stop()"><span
 		class="glyphicon glyphicon-stop"></span> Hangup
 	</a>
-	<a ng-disabled="registerState != REG_STATES.REGISTERED || callState != CALL_STATES.IN_CALL"
+	<a  ng-hide="true"  ng-disabled="registerState != REG_STATES.REGISTERED || callState != CALL_STATES.IN_CALL"
 	   id="verifySample"
 		class="btn btn-info" ng-click="verifySample()"><span
 		class="glyphicon glyphicon-record"></span> Identify
@@ -543,7 +544,8 @@
 		id="stopRecording" class="btn btn-danger" ng-click="stopRecording()"><span
 		class="glyphicon glyphicon-stop"></span> Stop
 	</a>
-	<a ng-disabled="registerState != REG_STATES.REGISTERED || callState != CALL_STATES.IN_CALL"
+	
+	<a ng-hide="true" ng-disabled="registerState != REG_STATES.REGISTERED || callState != CALL_STATES.IN_CALL"
 	   id="addPrint"
 		class="btn btn-primary" ng-click="addPrint()"><span
 		class="glyphicon glyphicon-record"></span> Add
@@ -552,26 +554,26 @@
 		class="glyphicon glyphicon-plus"></span> Reset
 	</a>
 		
+		
 	<div ng-show="false" class="checkbox">
 		<label> <input id="cobrowsing" type="checkbox" checked>
 			Co-browsing
 		</label>
 	</div>
 
-	<div id="chat">
+	<div id="chat" ng-show="registerState === REG_STATES.REGISTERED">
 		<label class="control-label" for="peer">Type in here</label> <input
 			id="chatInput" ng-disabled="registerState != REG_STATES.REGISTERED" ng-model="chatInput" class="form-control" type="text"
 			ng-enter="chat()" />
 		<textarea id="chatText" ng-disabled="true" ng-model="chatText" class="form-control"
-			rows="5" id="comment"></textarea>
+			rows="4" id="comment"></textarea>
 	</div>
     <div id="videos">
         <div id="videoBig">
-            <video id="videoOutput" autoplay width="640px" height="480px"
-                   poster="./img/NTTD_Logo.jpg"></video>
+            <video id="videoOutput" autoplay width="100%" poster="./img/NTTD_Logo.jpg"></video>
         </div>
         <div id="videoSmall" ng-show="registerState == REG_STATES.REGISTERED && callState != CALL_STATES.NO_CALL">
-            <video id="videoInput" autoplay width="240px" height="180px"></video>
+            <video id="videoInput" autoplay width="100%"></video>
         </div>
     </div>
 </div>
